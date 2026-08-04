@@ -1,0 +1,154 @@
+/**
+ * Design Tokens — Lowe's Design System
+ * Source of truth for color, type, spacing, radius, elevation and motion.
+ * Values traced to TA Brand Guidelines (Sept 2025) where the guide defines them;
+ * spacing/radius/elevation/motion scales are system defaults layered on top,
+ * since the brand guide does not prescribe UI-level scales.
+ */
+
+:root {
+  /* ---------------------------------------------------------------------
+   * COLOR — Primary palette (brand guide, p.23)
+   * ------------------------------------------------------------------- */
+  --color-ink-900: #071D49;   /* PANTONE 2768 C — darkest brand navy */
+  --color-blue-900: #012169;  /* PANTONE 280 C */
+  --color-blue-700: #0033A1;  /* PANTONE 286 C */
+  --color-blue-500: #0071CE;  /* PANTONE 285 C */
+  --color-blue-400: #00A3E0;  /* PANTONE 299 C */
+  --color-blue-200: #9BCBEB;  /* PANTONE 291 C */
+  --color-white: #FFFFFF;
+
+  /* COLOR — Expressive palette (brand guide, p.23) */
+  --color-green-700: #007935; /* PANTONE 356 C */
+  --color-green-500: #509E2F; /* PANTONE 362 C */
+  --color-green-300: #A9C23F; /* PANTONE 2300 C */
+  --color-gold-500: #F0B323;  /* PANTONE 7409 C */
+  --color-yellow-400: #F3D03E;/* PANTONE 129 C */
+  --color-red-700: #971B2F;   /* PANTONE 7427 C */
+  --color-red-500: #DA291C;   /* PANTONE 485 C */
+
+  /* COLOR — Brand accent (vest system, p.49) — reserved for illustrative /
+     uniform-referencing contexts, not general UI */
+  --color-accent-vest-red: #C20323;   /* PANTONE 186 C */
+  --color-accent-vest-blue: #0033A1;  /* PANTONE 661 C */
+
+  /* COLOR — Neutrals (system default; brand guide specifies no gray scale) */
+  --color-gray-950: #0B1220;
+  --color-gray-900: #161E2E;
+  --color-gray-700: #3B4457;
+  --color-gray-500: #6B7386;
+  --color-gray-300: #A7ADBA;
+  --color-gray-200: #D3D7DF;
+  --color-gray-100: #EBEDF1;
+  --color-gray-50:  #F6F7F9;
+
+  /* COLOR — Semantic mapping */
+  --color-bg-canvas: var(--color-white);
+  --color-bg-surface: var(--color-white);
+  --color-bg-sunken: var(--color-gray-50);
+  --color-bg-inverse: var(--color-blue-900);
+  --color-bg-brand: var(--color-blue-700);
+  --color-bg-brand-hover: var(--color-blue-900);
+
+  --color-text-primary: var(--color-ink-900);
+  --color-text-secondary: var(--color-gray-700);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-text-inverse: var(--color-white);
+  --color-text-link: var(--color-blue-700);
+  --color-text-link-hover: var(--color-blue-900);
+
+  --color-border-default: var(--color-gray-200);
+  --color-border-strong: var(--color-gray-300);
+  --color-border-focus: var(--color-blue-400);
+
+  --color-status-info: var(--color-blue-500);
+  --color-status-info-bg: #E8F3FC;
+  --color-status-success: var(--color-green-700);
+  --color-status-success-bg: #E7F5EC;
+  --color-status-warning: #966400;
+  --color-status-warning-bg: #FDF3DC;
+  --color-status-danger: var(--color-red-500);
+  --color-status-danger-bg: #FBEAE8;
+
+  /* ---------------------------------------------------------------------
+   * TYPOGRAPHY — Fellix (brand guide, p.15)
+   * ------------------------------------------------------------------- */
+  --font-family-base: "Fellix", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* Type scale — system default modular scale (~1.25 ratio), Fellix-tuned */
+  --font-size-caption: 0.75rem;   /* 12px */
+  --font-size-small: 0.875rem;    /* 14px */
+  --font-size-body: 1rem;         /* 16px */
+  --font-size-body-lg: 1.125rem;  /* 18px */
+  --font-size-h4: 1.375rem;       /* 22px */
+  --font-size-h3: 1.75rem;        /* 28px */
+  --font-size-h2: 2.25rem;        /* 36px */
+  --font-size-h1: 3rem;           /* 48px */
+  --font-size-display: 4rem;      /* 64px */
+
+  --line-height-tight: 1.1;
+  --line-height-heading: 1.2;
+  --line-height-body: 1.5;
+  --line-height-loose: 1.7;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.04em;
+
+  /* ---------------------------------------------------------------------
+   * SPACING — 4px base unit (system default)
+   * ------------------------------------------------------------------- */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-9: 6rem;     /* 96px */
+
+  /* ---------------------------------------------------------------------
+   * RADIUS — friendly/rounded, matching Fellix's "round, warm" character
+   * ------------------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* ---------------------------------------------------------------------
+   * ELEVATION
+   * ------------------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(7, 29, 73, 0.08);
+  --shadow-md: 0 4px 12px rgba(7, 29, 73, 0.10);
+  --shadow-lg: 0 12px 32px rgba(7, 29, 73, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(0, 163, 224, 0.45);
+
+  /* ---------------------------------------------------------------------
+   * MOTION
+   * ------------------------------------------------------------------- */
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+
+  /* ---------------------------------------------------------------------
+   * LAYOUT
+   * ------------------------------------------------------------------- */
+  --container-max: 1200px;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}
