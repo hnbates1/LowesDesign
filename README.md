@@ -1,5 +1,9 @@
 # Lowe's Design System
 
+> **Proprietary & Confidential. Keep this repository private.** The repository
+> includes the complete September 2025 Employer Brand Guidelines and must not
+> be redistributed publicly.
+
 A framework-agnostic, general-purpose UI kit: design tokens, the Fellix
 typeface, and a reusable component library. Values are traced to the
 **TA Brand Guidelines (September 2025)** everywhere the guide defines them;
@@ -16,7 +20,23 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-## What's in scope
+## Complete employer-brand reference
+
+The complete 75-page source and a searchable, structured companion are included:
+
+- [`source/TA-Employer-Brand-Guidelines-Sep2025.pdf`](source/TA-Employer-Brand-Guidelines-Sep2025.pdf) - original visual source of truth
+- [`docs/employer-brand-guidelines/README.md`](docs/employer-brand-guidelines/README.md) - detailed practical reference
+- [`docs/employer-brand-guidelines/full-text.txt`](docs/employer-brand-guidelines/full-text.txt) - complete layout-preserving text extraction
+- [`docs/employer-brand-guidelines/page-index.md`](docs/employer-brand-guidelines/page-index.md) - all 75 pages indexed
+- [`tokens/employer-brand.json`](tokens/employer-brand.json) - machine-readable mission, AVP, voice, palettes, hierarchy, and naming rules
+
+The companion covers the mission, AVP pillars, behaviors, values, voice,
+associate quotes, logo rules, typography, complete printed color data, visual
+hierarchy, gable, photography, vest/badge, characters, skin and hair palettes,
+iconography, EBRC contents, and asset naming conventions. Where text extraction
+cannot preserve a visual do/don't example, consult the original PDF.
+
+## UI-kit scope
 
 This is a **general-purpose UI kit**, not a careers/hiring microsite. It
 uses Lowe's brand colors, type, and a few brand motifs (the gable framing
@@ -30,6 +50,7 @@ for any product surface.
 tokens/
   tokens.css      CSS custom properties — the single source of truth
   tokens.json     Same values, portable (Figma / Style Dictionary / etc.)
+  employer-brand.json  Machine-readable employer-brand source data
 css/
   fonts.css       @font-face declarations for all 7 Fellix weights
   base.css        Reset + base element styles built on tokens
@@ -44,6 +65,13 @@ js/
                   to-clipboard demos) — reference implementation, not a
                   required dependency of the CSS system
 index.html        The style guide itself
+source/
+  TA-Employer-Brand-Guidelines-Sep2025.pdf  Original 75-page guide
+docs/employer-brand-guidelines/
+  README.md       Structured, searchable employer-brand reference
+  full-text.txt   Complete layout-preserving source text
+  page-index.md   Page-by-page source map
+  previews/       Five visual contact sheets covering all 75 pages
 ```
 
 ## Using this in a product
@@ -107,6 +135,9 @@ mapping.
 documented "gable" roofline silhouette, provided for UI chrome like nav
 lockups. It is **not** the official vector logo — swap in the real logo
 asset for any customer-facing or trademark-sensitive placement.
+
+For complete flex, intertwining, framing, and clipping-mask rules, see the
+[employer-brand reference](docs/employer-brand-guidelines/README.md#gable).
 
 ## Contributing
 
