@@ -1,0 +1,395 @@
+Screens:
+  scrDetails:
+    Properties:
+      Fill: =gblCanvas
+      OnVisible: |-
+        =Reset(txtWebsite); Reset(txtFax); Reset(txtStreet); Reset(txtCity); Reset(txtState); Reset(txtPostalCode); Reset(txtCountry); Reset(txtPOBox); Reset(txtFullAddress);
+        Set(varEmailKey, Lower(Trim(vEmail)));
+        Set(varPhoneKey, Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(If(!IsBlank(Trim(vMobilePhone)), vMobilePhone, vBusinessPhone), "(", ""), ")", ""), "-", ""), " ", ""), ".", ""), "+", ""));
+        Set(varNameCompanyKey, Lower(Trim(vFirstName)) & "|" & Lower(Trim(vLastName)) & "|" & Lower(Trim(vCompany)));
+        Set(varExisting, Blank());
+        If(!IsBlank(varEmailKey), Set(varExisting, LookUp(BusinessCards, EmailKey = varEmailKey)));
+        If(IsBlank(varExisting) && !IsBlank(varPhoneKey), Set(varExisting, LookUp(BusinessCards, PhoneKey = varPhoneKey)));
+        If(IsBlank(varExisting) && !IsBlank(Trim(vFirstName)) && !IsBlank(Trim(vLastName)) && !IsBlank(Trim(vCompany)), Set(varExisting, LookUp(BusinessCards, NameCompanyKey = varNameCompanyKey)))
+    Children:
+      - rectDetailsHeader:
+          Control: Rectangle
+          Properties:
+            Fill: =gblInk
+            Height: =130
+            Width: =Parent.Width
+
+      - lblDetailsTitle:
+          Control: Label
+          Properties:
+            Color: =Color.White
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            Size: =26
+            Text: ="More details"
+            Width: =360
+            X: =32
+            Y: =24
+
+      - lblDetailsSubtitle:
+          Control: Label
+          Properties:
+            Color: =gblLightBlue
+            Height: =36
+            Size: =14
+            Text: ="3. Finish the contact and save."
+            Width: =400
+            X: =32
+            Y: =74
+
+      - btnDetailsBack:
+          Control: Button
+          Properties:
+            BorderColor: =gblLightBlue
+            Color: =Color.White
+            Fill: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            OnSelect: =Back()
+            Text: ="Back"
+            Width: =116
+            X: =492
+            Y: =36
+
+      - lblDetailsDuplicate:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            Fill: =ColorFade(gblLightBlue, 70%)
+            FontWeight: =FontWeight.Bold
+            Height: =56
+            PaddingLeft: =16
+            Size: =13
+            Text: ="Match found: " & Coalesce(varExisting.FirstName, "") & " " & Coalesce(varExisting.LastName, "") & ". Choose Update existing or Save as new."
+            Visible: =!IsBlank(varExisting)
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =146
+
+      - lblWebsite:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="Website"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =214
+
+      - txtWebsite:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vWebsite
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =238
+
+      - lblFax:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="Fax"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =286
+
+      - txtFax:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vFax
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =310
+
+      - lblStreet:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="Street"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =358
+
+      - txtStreet:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vAddressStreet
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =382
+
+      - lblCity:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="City"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =430
+
+      - txtCity:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vAddressCity
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =454
+
+      - lblState:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="State / province"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =502
+
+      - txtState:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vAddressState
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =526
+
+      - lblPostalCode:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="Postal code"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =574
+
+      - txtPostalCode:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vPostalCode
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =598
+
+      - lblCountry:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="Country"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =646
+
+      - txtCountry:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vCountry
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =670
+
+      - lblPOBox:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="P.O. box"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =718
+
+      - txtPOBox:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vPOBox
+            Fill: =Color.White
+            Height: =42
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =742
+
+      - lblFullAddress:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =22
+            Size: =12
+            Text: ="Full address"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =790
+
+      - txtFullAddress:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vFullAddress
+            Fill: =Color.White
+            Height: =76
+            Mode: =TextMode.MultiLine
+            Size: =14
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =814
+
+      - btnUpdateExisting:
+          Control: Button
+          Properties:
+            Color: =Color.White
+            Fill: =gblSuccess
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Size: =15
+            Text: ="Update existing"
+            Visible: =!IsBlank(varExisting)
+            Width: =272
+            X: =32
+            Y: =930
+            OnSelect: |-
+              =Set(vWebsite, Trim(txtWebsite.Text));
+              Set(vFax, Trim(txtFax.Text));
+              Set(vAddressStreet, Trim(txtStreet.Text));
+              Set(vAddressCity, Trim(txtCity.Text));
+              Set(vAddressState, Trim(txtState.Text));
+              Set(vPostalCode, Trim(txtPostalCode.Text));
+              Set(vCountry, Trim(txtCountry.Text));
+              Set(vPOBox, Trim(txtPOBox.Text));
+              Set(vFullAddress, Trim(txtFullAddress.Text));
+              Patch(
+                BusinessCards,
+                varExisting,
+                {
+                  Title: If(IsBlank(vCompany), varExisting.Title, vCompany),
+                  FirstName: If(IsBlank(vFirstName), varExisting.FirstName, vFirstName),
+                  LastName: If(IsBlank(vLastName), varExisting.LastName, vLastName),
+                  FullName: If(IsBlank(vFullName), varExisting.FullName, vFullName),
+                  JobTitle: If(IsBlank(vJobTitle), varExisting.JobTitle, vJobTitle),
+                  Department: If(IsBlank(vDepartment), varExisting.Department, vDepartment),
+                  Email: If(IsBlank(vEmail), varExisting.Email, vEmail),
+                  BusinessPhone: If(IsBlank(vBusinessPhone), varExisting.BusinessPhone, vBusinessPhone),
+                  MobilePhone: If(IsBlank(vMobilePhone), varExisting.MobilePhone, vMobilePhone),
+                  Fax: If(IsBlank(vFax), varExisting.Fax, vFax),
+                  Website: If(IsBlank(vWebsite), varExisting.Website, vWebsite),
+                  AddressStreet: If(IsBlank(vAddressStreet), varExisting.AddressStreet, vAddressStreet),
+                  AddressCity: If(IsBlank(vAddressCity), varExisting.AddressCity, vAddressCity),
+                  AddressState: If(IsBlank(vAddressState), varExisting.AddressState, vAddressState),
+                  PostalCode: If(IsBlank(vPostalCode), varExisting.PostalCode, vPostalCode),
+                  Country: If(IsBlank(vCountry), varExisting.Country, vCountry),
+                  AddressPostOfficeBox: If(IsBlank(vPOBox), varExisting.AddressPostOfficeBox, vPOBox),
+                  FullAddress: If(IsBlank(vFullAddress), varExisting.FullAddress, vFullAddress),
+                  EmailKey: If(IsBlank(varEmailKey), varExisting.EmailKey, varEmailKey),
+                  PhoneKey: If(IsBlank(varPhoneKey), varExisting.PhoneKey, varPhoneKey),
+                  NameCompanyKey: If(IsBlank(vFirstName) || IsBlank(vLastName) || IsBlank(vCompany), varExisting.NameCompanyKey, varNameCompanyKey)
+                }
+              );
+              Set(varSaveResult, "updated");
+              Navigate(scrSaved, ScreenTransition.Fade)
+
+      - btnSaveNew:
+          Control: Button
+          Properties:
+            BorderColor: =gblAction
+            Color: =If(IsBlank(varExisting), Color.White, gblAction)
+            Fill: =If(IsBlank(varExisting), gblAction, Color.White)
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Size: =15
+            Text: =If(IsBlank(varExisting), "Save contact", "Save as new")
+            Width: =If(IsBlank(varExisting), Parent.Width - 64, 272)
+            X: =If(IsBlank(varExisting), 32, 336)
+            Y: =930
+            OnSelect: |-
+              =Set(vWebsite, Trim(txtWebsite.Text));
+              Set(vFax, Trim(txtFax.Text));
+              Set(vAddressStreet, Trim(txtStreet.Text));
+              Set(vAddressCity, Trim(txtCity.Text));
+              Set(vAddressState, Trim(txtState.Text));
+              Set(vPostalCode, Trim(txtPostalCode.Text));
+              Set(vCountry, Trim(txtCountry.Text));
+              Set(vPOBox, Trim(txtPOBox.Text));
+              Set(vFullAddress, Trim(txtFullAddress.Text));
+              Patch(
+                BusinessCards,
+                Defaults(BusinessCards),
+                {
+                  Title: vCompany,
+                  FirstName: vFirstName,
+                  LastName: vLastName,
+                  FullName: vFullName,
+                  JobTitle: vJobTitle,
+                  Department: vDepartment,
+                  Email: vEmail,
+                  BusinessPhone: vBusinessPhone,
+                  MobilePhone: vMobilePhone,
+                  Fax: vFax,
+                  Website: vWebsite,
+                  AddressStreet: vAddressStreet,
+                  AddressCity: vAddressCity,
+                  AddressState: vAddressState,
+                  PostalCode: vPostalCode,
+                  Country: vCountry,
+                  AddressPostOfficeBox: vPOBox,
+                  FullAddress: vFullAddress,
+                  EmailKey: Lower(Trim(vEmail)),
+                  PhoneKey: Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(If(!IsBlank(Trim(vMobilePhone)), vMobilePhone, vBusinessPhone), "(", ""), ")", ""), "-", ""), " ", ""), ".", ""), "+", ""),
+                  NameCompanyKey: Lower(Trim(vFirstName)) & "|" & Lower(Trim(vLastName)) & "|" & Lower(Trim(vCompany))
+                }
+              );
+              Set(varSaveResult, "created");
+              Navigate(scrSaved, ScreenTransition.Fade)
