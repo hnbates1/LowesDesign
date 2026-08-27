@@ -1,0 +1,95 @@
+scrSaved As screen:
+    Fill: =White
+
+    rectSavedTop As rectangle:
+        Fill: =gblInk
+        Height: =260
+        Width: =Parent.Width
+        ZIndex: =1
+
+    lblSavedCheck As label:
+        Align: =Align.Center
+        Color: =White
+        Fill: =gblSuccess
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =96
+        RadiusBottomLeft: =48
+        RadiusBottomRight: =48
+        RadiusTopLeft: =48
+        RadiusTopRight: =48
+        Size: =42
+        Text: ="✓"
+        Width: =96
+        X: =(Parent.Width - Self.Width) / 2
+        Y: =92
+        ZIndex: =2
+
+    lblSavedTitle As label:
+        Align: =Align.Center
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =58
+        Size: =28
+        Text: =If(varSaveResult = "updated", "Contact updated", "Contact saved")
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =330
+        ZIndex: =3
+
+    lblSavedName As label:
+        Align: =Align.Center
+        Color: =gblTextSecondary
+        Font: =Font.'Segoe UI'
+        Height: =80
+        Size: =18
+        Text: =vFullName & If(!IsBlank(vCompany), Char(10) & vCompany, "")
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =402
+        ZIndex: =4
+
+    lblSavedMessage As label:
+        Align: =Align.Center
+        Color: =gblTextSecondary
+        Font: =Font.'Segoe UI'
+        Height: =90
+        Size: =14
+        Text: =If(varSaveResult = "updated", "The existing SharePoint contact was updated without overwriting fields the scan left blank.", "A new contact was added to the SharePoint list.")
+        Width: =Parent.Width - 96
+        X: =48
+        Y: =520
+        ZIndex: =5
+
+    btnScanAnother As button:
+        Color: =White
+        Fill: =gblAction
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =64
+        HoverFill: =gblBlue
+        OnSelect: |-
+            =Reset(btnCardPhoto);
+            Set(varExisting, Blank());
+            Set(varPrediction, Blank());
+            Set(varSaveResult, "");
+            Navigate(scrScan, ScreenTransition.Fade)
+        Size: =18
+        Text: ="Scan another card"
+        Width: =Parent.Width - 96
+        X: =48
+        Y: =690
+        ZIndex: =6
+
+    lblSavedFooter As label:
+        Align: =Align.Center
+        Color: =gblTextSecondary
+        Font: =Font.'Segoe UI'
+        Height: =60
+        Size: =12
+        Text: ="Lowe's business card scanner"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =850
+        ZIndex: =7
