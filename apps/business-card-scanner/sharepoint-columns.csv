@@ -1,0 +1,22 @@
+ColumnName,SharePointType,Required,IndexRecommended,Purpose
+Title,Single line of text,No,No,Company name
+FirstName,Single line of text,No,No,First name
+LastName,Single line of text,No,No,Last name
+FullName,Single line of text,No,No,Full name
+JobTitle,Single line of text,No,No,Job title
+Department,Single line of text,No,No,Department
+Email,Single line of text,No,No,Email address
+BusinessPhone,Single line of text,No,No,Business phone
+MobilePhone,Single line of text,No,No,Mobile phone
+Fax,Single line of text,No,No,Fax
+Website,Single line of text,No,No,Website URL
+AddressStreet,Single line of text,No,No,Street address
+AddressCity,Single line of text,No,No,City
+AddressState,Single line of text,No,No,State or province
+PostalCode,Single line of text,No,No,Postal code
+Country,Single line of text,No,No,Country
+AddressPostOfficeBox,Single line of text,No,No,P.O. box
+FullAddress,Multiple lines of text,No,No,Full address as returned by AI Builder
+EmailKey,Single line of text,No,Yes,Lowercase email duplicate key
+PhoneKey,Single line of text,No,Yes,Normalized phone duplicate key
+NameCompanyKey,Single line of text,No,Yes,Lowercase first-name last-name company duplicate key
