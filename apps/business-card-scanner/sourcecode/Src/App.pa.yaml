@@ -1,0 +1,35 @@
+App:
+  Properties:
+    BackEnabled: =false
+    StartScreen: =scrScan
+    OnStart: |-
+      =Set(gblInk, ColorValue("#071D49"));
+      Set(gblBlue, ColorValue("#0033A1"));
+      Set(gblAction, ColorValue("#0071CE"));
+      Set(gblLightBlue, ColorValue("#9BCBEB"));
+      Set(gblCanvas, ColorValue("#F6F7F9"));
+      Set(gblTextSecondary, ColorValue("#3B4457"));
+      Set(gblBorder, ColorValue("#D3D7DF"));
+      Set(gblSuccess, ColorValue("#007935"));
+      Set(gblDanger, ColorValue("#DA291C"));
+      Set(varExisting, Blank());
+      Set(varPrediction, Blank());
+      Set(varSaveResult, "");
+      Set(vFirstName, "");
+      Set(vLastName, "");
+      Set(vFullName, "");
+      Set(vCompany, "");
+      Set(vJobTitle, "");
+      Set(vDepartment, "");
+      Set(vEmail, "");
+      Set(vBusinessPhone, "");
+      Set(vMobilePhone, "");
+      Set(vFax, "");
+      Set(vWebsite, "");
+      Set(vAddressStreet, "");
+      Set(vAddressCity, "");
+      Set(vAddressState, "");
+      Set(vPostalCode, "");
+      Set(vCountry, "");
+      Set(vPOBox, "");
+      Set(vFullAddress, "")
