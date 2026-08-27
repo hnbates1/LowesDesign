@@ -1,0 +1,284 @@
+Screens:
+  scrReview:
+    Properties:
+      Fill: =gblCanvas
+      OnVisible: =Reset(txtFirstName); Reset(txtLastName); Reset(txtCompany); Reset(txtJobTitle); Reset(txtDepartment); Reset(txtEmail); Reset(txtBusinessPhone); Reset(txtMobilePhone)
+    Children:
+      - rectReviewHeader:
+          Control: Rectangle
+          Properties:
+            Fill: =gblInk
+            Height: =130
+            Width: =Parent.Width
+
+      - lblReviewTitle:
+          Control: Label
+          Properties:
+            Color: =Color.White
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            Size: =26
+            Text: ="Review contact"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =24
+
+      - lblReviewSubtitle:
+          Control: Label
+          Properties:
+            Color: =gblLightBlue
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =14
+            Text: ="2. Correct anything the scan got wrong."
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =74
+
+      - lblDuplicate:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            Fill: =ColorFade(gblLightBlue, 70%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =72
+            PaddingLeft: =16
+            Size: =13
+            Text: ="Possible existing contact: " & Coalesce(varExisting.FirstName, "") & " " & Coalesce(varExisting.LastName, "") & If(!IsBlank(varExisting.Email), " • " & varExisting.Email, "")
+            Visible: =!IsBlank(varExisting)
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =148
+
+      - lblFirstName:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="First name"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =236
+
+      - txtFirstName:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vFirstName
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =262
+
+      - lblLastName:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="Last name"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =316
+
+      - txtLastName:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vLastName
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =342
+
+      - lblCompany:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="Company"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =396
+
+      - txtCompany:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vCompany
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =422
+
+      - lblJobTitle:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="Job title"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =476
+
+      - txtJobTitle:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vJobTitle
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =502
+
+      - lblDepartment:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="Department"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =556
+
+      - txtDepartment:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vDepartment
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =582
+
+      - lblEmail:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="Email"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =636
+
+      - txtEmail:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vEmail
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =662
+
+      - lblBusinessPhone:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="Business phone"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =716
+
+      - txtBusinessPhone:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vBusinessPhone
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =742
+
+      - lblMobilePhone:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            Size: =13
+            Text: ="Mobile phone"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =796
+
+      - txtMobilePhone:
+          Control: TextInput
+          Properties:
+            BorderColor: =gblBorder
+            Default: =vMobilePhone
+            Fill: =Color.White
+            Height: =46
+            Size: =16
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =822
+
+      - btnReviewBack:
+          Control: Button
+          Properties:
+            BorderColor: =gblAction
+            Color: =gblAction
+            Fill: =Color.White
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            OnSelect: =Back()
+            Size: =16
+            Text: ="Back"
+            Width: =170
+            X: =32
+            Y: =930
+
+      - btnReviewContinue:
+          Control: Button
+          Properties:
+            Color: =Color.White
+            Fill: =gblAction
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Size: =16
+            Text: ="More details"
+            Width: =Parent.Width - 250
+            X: =218
+            Y: =930
+            OnSelect: |-
+              =Set(vFirstName, Trim(txtFirstName.Text));
+              Set(vLastName, Trim(txtLastName.Text));
+              Set(vFullName, Trim(txtFirstName.Text & " " & txtLastName.Text));
+              Set(vCompany, Trim(txtCompany.Text));
+              Set(vJobTitle, Trim(txtJobTitle.Text));
+              Set(vDepartment, Trim(txtDepartment.Text));
+              Set(vEmail, Trim(txtEmail.Text));
+              Set(vBusinessPhone, Trim(txtBusinessPhone.Text));
+              Set(vMobilePhone, Trim(txtMobilePhone.Text));
+              Navigate(scrDetails, ScreenTransition.Fade)
