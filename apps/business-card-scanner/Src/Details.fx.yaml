@@ -1,0 +1,440 @@
+scrDetails As screen:
+    Fill: =gblCanvas
+    OnVisible: |-
+        =Reset(txtWebsite); Reset(txtFax); Reset(txtStreet); Reset(txtCity); Reset(txtState); Reset(txtPostalCode); Reset(txtCountry); Reset(txtPOBox); Reset(txtFullAddress);
+        Set(varEmailKey, Lower(Trim(vEmail)));
+        Set(varPhoneKey, Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(If(!IsBlank(Trim(vMobilePhone)), vMobilePhone, vBusinessPhone), "(", ""), ")", ""), "-", ""), " ", ""), ".", ""), "+", ""));
+        Set(varNameCompanyKey, Lower(Trim(vFirstName)) & "|" & Lower(Trim(vLastName)) & "|" & Lower(Trim(vCompany)));
+        Set(varExisting, Blank());
+        If(!IsBlank(varEmailKey), Set(varExisting, LookUp(BusinessCards, EmailKey = varEmailKey)));
+        If(IsBlank(varExisting) && !IsBlank(varPhoneKey), Set(varExisting, LookUp(BusinessCards, PhoneKey = varPhoneKey)));
+        If(IsBlank(varExisting) && !IsBlank(Trim(vFirstName)) && !IsBlank(Trim(vLastName)) && !IsBlank(Trim(vCompany)), Set(varExisting, LookUp(BusinessCards, NameCompanyKey = varNameCompanyKey)))
+
+    rectDetailsHeader As rectangle:
+        Fill: =gblInk
+        Height: =130
+        Width: =Parent.Width
+        ZIndex: =1
+
+    lblDetailsTitle As label:
+        Color: =White
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        Size: =26
+        Text: ="More details"
+        Width: =400
+        X: =32
+        Y: =24
+        ZIndex: =2
+
+    lblDetailsSubtitle As label:
+        Color: =gblLightBlue
+        Font: =Font.'Segoe UI'
+        Height: =36
+        Size: =14
+        Text: ="3. Finish the contact and save."
+        Width: =400
+        X: =32
+        Y: =74
+        ZIndex: =3
+
+    btnDetailsBack As button:
+        BorderColor: =gblLightBlue
+        Color: =White
+        Fill: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        OnSelect: =Back()
+        Size: =14
+        Text: ="Back"
+        Width: =116
+        X: =492
+        Y: =36
+        ZIndex: =4
+
+    lblDetailsDuplicate As label:
+        Color: =gblInk
+        Fill: =ColorFade(gblLightBlue, 70%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        PaddingLeft: =16
+        Size: =13
+        Text: ="Match found: " & Coalesce(varExisting.FirstName, "") & " " & Coalesce(varExisting.LastName, "") & ". Choose Update existing or Save as new."
+        Visible: =!IsBlank(varExisting)
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =146
+        ZIndex: =5
+
+    lblWebsite As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="Website"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =216
+        ZIndex: =6
+
+    txtWebsite As text:
+        BorderColor: =gblBorder
+        Default: =vWebsite
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =242
+        ZIndex: =7
+
+    lblFax As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="Fax"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =298
+        ZIndex: =8
+
+    txtFax As text:
+        BorderColor: =gblBorder
+        Default: =vFax
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =324
+        ZIndex: =9
+
+    lblStreet As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="Street"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =380
+        ZIndex: =10
+
+    txtStreet As text:
+        BorderColor: =gblBorder
+        Default: =vAddressStreet
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =406
+        ZIndex: =11
+
+    lblCity As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="City"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =462
+        ZIndex: =12
+
+    txtCity As text:
+        BorderColor: =gblBorder
+        Default: =vAddressCity
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =488
+        ZIndex: =13
+
+    lblState As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="State"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =544
+        ZIndex: =14
+
+    txtState As text:
+        BorderColor: =gblBorder
+        Default: =vAddressState
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =570
+        ZIndex: =15
+
+    lblPostalCode As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="Postal code"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =626
+        ZIndex: =16
+
+    txtPostalCode As text:
+        BorderColor: =gblBorder
+        Default: =vPostalCode
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =652
+        ZIndex: =17
+
+    lblCountry As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="Country"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =708
+        ZIndex: =18
+
+    txtCountry As text:
+        BorderColor: =gblBorder
+        Default: =vCountry
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =734
+        ZIndex: =19
+
+    lblPOBox As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="P.O. box"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =790
+        ZIndex: =20
+
+    txtPOBox As text:
+        BorderColor: =gblBorder
+        Default: =vPOBox
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =46
+        HoverBorderColor: =gblAction
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =15
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =816
+        ZIndex: =21
+
+    lblFullAddress As label:
+        Color: =gblInk
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =24
+        Size: =13
+        Text: ="Full address"
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =872
+        ZIndex: =22
+
+    txtFullAddress As text:
+        BorderColor: =gblBorder
+        Default: =vFullAddress
+        Fill: =White
+        Font: =Font.'Segoe UI'
+        Height: =72
+        HoverBorderColor: =gblAction
+        Mode: =TextMode.MultiLine
+        RadiusBottomLeft: =6
+        RadiusBottomRight: =6
+        RadiusTopLeft: =6
+        RadiusTopRight: =6
+        Size: =14
+        Width: =Parent.Width - 64
+        X: =32
+        Y: =898
+        ZIndex: =23
+
+    btnUpdateExisting As button:
+        Color: =White
+        Fill: =gblSuccess
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =58
+        HoverFill: =ColorFade(gblSuccess, -20%)
+        OnSelect: |-
+            =Set(vWebsite, Trim(txtWebsite.Text));
+            Set(vFax, Trim(txtFax.Text));
+            Set(vAddressStreet, Trim(txtStreet.Text));
+            Set(vAddressCity, Trim(txtCity.Text));
+            Set(vAddressState, Trim(txtState.Text));
+            Set(vPostalCode, Trim(txtPostalCode.Text));
+            Set(vCountry, Trim(txtCountry.Text));
+            Set(vPOBox, Trim(txtPOBox.Text));
+            Set(vFullAddress, Trim(txtFullAddress.Text));
+            Patch(
+                BusinessCards,
+                varExisting,
+                {
+                    Title: If(IsBlank(vCompany), varExisting.Title, vCompany),
+                    FirstName: If(IsBlank(vFirstName), varExisting.FirstName, vFirstName),
+                    LastName: If(IsBlank(vLastName), varExisting.LastName, vLastName),
+                    FullName: If(IsBlank(vFullName), varExisting.FullName, vFullName),
+                    JobTitle: If(IsBlank(vJobTitle), varExisting.JobTitle, vJobTitle),
+                    Department: If(IsBlank(vDepartment), varExisting.Department, vDepartment),
+                    Email: If(IsBlank(vEmail), varExisting.Email, vEmail),
+                    BusinessPhone: If(IsBlank(vBusinessPhone), varExisting.BusinessPhone, vBusinessPhone),
+                    MobilePhone: If(IsBlank(vMobilePhone), varExisting.MobilePhone, vMobilePhone),
+                    Fax: If(IsBlank(vFax), varExisting.Fax, vFax),
+                    Website: If(IsBlank(vWebsite), varExisting.Website, vWebsite),
+                    AddressStreet: If(IsBlank(vAddressStreet), varExisting.AddressStreet, vAddressStreet),
+                    AddressCity: If(IsBlank(vAddressCity), varExisting.AddressCity, vAddressCity),
+                    AddressState: If(IsBlank(vAddressState), varExisting.AddressState, vAddressState),
+                    PostalCode: If(IsBlank(vPostalCode), varExisting.PostalCode, vPostalCode),
+                    Country: If(IsBlank(vCountry), varExisting.Country, vCountry),
+                    AddressPostOfficeBox: If(IsBlank(vPOBox), varExisting.AddressPostOfficeBox, vPOBox),
+                    FullAddress: If(IsBlank(vFullAddress), varExisting.FullAddress, vFullAddress),
+                    EmailKey: If(IsBlank(varEmailKey), varExisting.EmailKey, varEmailKey),
+                    PhoneKey: If(IsBlank(varPhoneKey), varExisting.PhoneKey, varPhoneKey),
+                    NameCompanyKey: If(IsBlank(vFirstName) || IsBlank(vLastName) || IsBlank(vCompany), varExisting.NameCompanyKey, varNameCompanyKey)
+                }
+            );
+            Set(varSaveResult, "updated");
+            Navigate(scrSaved, ScreenTransition.Fade)
+        Size: =15
+        Text: ="Update existing"
+        Visible: =!IsBlank(varExisting)
+        Width: =272
+        X: =32
+        Y: =1000
+        ZIndex: =24
+
+    btnSaveNew As button:
+        BorderColor: =gblAction
+        Color: =If(IsBlank(varExisting), White, gblAction)
+        Fill: =If(IsBlank(varExisting), gblAction, White)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =58
+        HoverFill: =If(IsBlank(varExisting), gblBlue, ColorFade(gblLightBlue, 70%))
+        OnSelect: |-
+            =Set(vWebsite, Trim(txtWebsite.Text));
+            Set(vFax, Trim(txtFax.Text));
+            Set(vAddressStreet, Trim(txtStreet.Text));
+            Set(vAddressCity, Trim(txtCity.Text));
+            Set(vAddressState, Trim(txtState.Text));
+            Set(vPostalCode, Trim(txtPostalCode.Text));
+            Set(vCountry, Trim(txtCountry.Text));
+            Set(vPOBox, Trim(txtPOBox.Text));
+            Set(vFullAddress, Trim(txtFullAddress.Text));
+            Patch(
+                BusinessCards,
+                Defaults(BusinessCards),
+                {
+                    Title: vCompany,
+                    FirstName: vFirstName,
+                    LastName: vLastName,
+                    FullName: vFullName,
+                    JobTitle: vJobTitle,
+                    Department: vDepartment,
+                    Email: vEmail,
+                    BusinessPhone: vBusinessPhone,
+                    MobilePhone: vMobilePhone,
+                    Fax: vFax,
+                    Website: vWebsite,
+                    AddressStreet: vAddressStreet,
+                    AddressCity: vAddressCity,
+                    AddressState: vAddressState,
+                    PostalCode: vPostalCode,
+                    Country: vCountry,
+                    AddressPostOfficeBox: vPOBox,
+                    FullAddress: vFullAddress,
+                    EmailKey: Lower(Trim(vEmail)),
+                    PhoneKey: Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(If(!IsBlank(Trim(vMobilePhone)), vMobilePhone, vBusinessPhone), "(", ""), ")", ""), "-", ""), " ", ""), ".", ""), "+", ""),
+                    NameCompanyKey: Lower(Trim(vFirstName)) & "|" & Lower(Trim(vLastName)) & "|" & Lower(Trim(vCompany))
+                }
+            );
+            Set(varSaveResult, "created");
+            Navigate(scrSaved, ScreenTransition.Fade)
+        Size: =15
+        Text: =If(IsBlank(varExisting), "Save contact", "Save as new")
+        Width: =If(IsBlank(varExisting), Parent.Width - 64, 272)
+        X: =If(IsBlank(varExisting), 32, 336)
+        Y: =1000
+        ZIndex: =25
