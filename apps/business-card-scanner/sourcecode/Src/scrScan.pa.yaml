@@ -1,0 +1,151 @@
+Screens:
+  scrScan:
+    Properties:
+      Fill: =gblCanvas
+      OnVisible: =Set(varExisting, Blank())
+    Children:
+      - rectScanHeader:
+          Control: Rectangle
+          Properties:
+            Fill: =gblInk
+            Height: =150
+            Width: =Parent.Width
+
+      - lblScanTitle:
+          Control: Label
+          Properties:
+            Color: =Color.White
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =52
+            Size: =28
+            Text: ="Business card scanner"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =30
+
+      - lblScanSubtitle:
+          Control: Label
+          Properties:
+            Color: =gblLightBlue
+            Font: =Font.'Segoe UI'
+            Height: =42
+            Size: =15
+            Text: ="Capture a card, review the details, then save or update."
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =84
+
+      - lblScanStep:
+          Control: Label
+          Properties:
+            Color: =gblInk
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =36
+            Size: =18
+            Text: ="1. Add a business card photo"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =182
+
+      - btnCardPhoto:
+          Control: AddMedia
+          Properties:
+            BorderColor: =gblAction
+            BorderThickness: =2
+            Fill: =Color.White
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =150
+            Text: ="Take or choose a card photo"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =232
+
+      - imgCardPreview:
+          Control: Image
+          Properties:
+            BorderColor: =gblBorder
+            BorderThickness: =1
+            Height: =350
+            Image: =btnCardPhoto.Media
+            ImagePosition: =ImagePosition.Fit
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =412
+
+      - lblPrivacy:
+          Control: Label
+          Properties:
+            Color: =gblTextSecondary
+            Font: =Font.'Segoe UI'
+            Height: =54
+            Size: =13
+            Text: ="The photo is used to read the card. This app does not save the card image to SharePoint."
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =780
+
+      - btnAnalyze:
+          Control: Button
+          Properties:
+            Color: =Color.White
+            Fill: =gblAction
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            HoverFill: =gblBlue
+            Size: =18
+            Text: ="Read card"
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =870
+            OnSelect: |-
+              =If(
+                IsBlank(btnCardPhoto.Media),
+                Notify("Add a business card photo first.", NotificationType.Warning),
+                Set(varImageJSON, JSON(btnCardPhoto.Media, JSONFormat.IncludeBinaryData));
+                Set(varImageData, Mid(varImageJSON, 2, Len(varImageJSON) - 2));
+                Set(varImageBase64, Mid(varImageData, Find(",", varImageData) + 1, Len(varImageData)));
+                Set(varPrediction, 'Business card reader'.Predict(Document: varImageBase64));
+                Set(vFirstName, Coalesce(varPrediction.Fields.FirstName.Value.Text, ""));
+                Set(vLastName, Coalesce(varPrediction.Fields.LastName.Value.Text, ""));
+                Set(vFullName, Coalesce(varPrediction.Fields.FullName.Value.Text, ""));
+                Set(vCompany, Coalesce(varPrediction.Fields.CompanyName.Value.Text, ""));
+                Set(vJobTitle, Coalesce(varPrediction.Fields.JobTitle.Value.Text, ""));
+                Set(vDepartment, Coalesce(varPrediction.Fields.Department.Value.Text, ""));
+                Set(vEmail, Coalesce(varPrediction.Fields.Email.Value.Text, ""));
+                Set(vBusinessPhone, Coalesce(varPrediction.Fields.BusinessPhone.Value.Text, ""));
+                Set(vMobilePhone, Coalesce(varPrediction.Fields.MobilePhone.Value.Text, ""));
+                Set(vFax, Coalesce(varPrediction.Fields.Fax.Value.Text, ""));
+                Set(vWebsite, Coalesce(varPrediction.Fields.Website.Value.Text, ""));
+                Set(vAddressStreet, Coalesce(varPrediction.Fields.AddressStreet.Value.Text, ""));
+                Set(vAddressCity, Coalesce(varPrediction.Fields.AddressCity.Value.Text, ""));
+                Set(vAddressState, Coalesce(varPrediction.Fields.AddressState.Value.Text, ""));
+                Set(vPostalCode, Coalesce(varPrediction.Fields.AddressPostalCode.Value.Text, ""));
+                Set(vCountry, Coalesce(varPrediction.Fields.AddressCountry.Value.Text, ""));
+                Set(vPOBox, Coalesce(varPrediction.Fields.AddressPostOfficeBox.Value.Text, ""));
+                Set(vFullAddress, Coalesce(varPrediction.Fields.FullAddress.Value.Text, ""));
+                Set(varEmailKey, Lower(Trim(vEmail)));
+                Set(varPhoneKey, Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(If(!IsBlank(Trim(vMobilePhone)), vMobilePhone, vBusinessPhone), "(", ""), ")", ""), "-", ""), " ", ""), ".", ""), "+", ""));
+                Set(varNameCompanyKey, Lower(Trim(vFirstName)) & "|" & Lower(Trim(vLastName)) & "|" & Lower(Trim(vCompany)));
+                Set(varExisting, Blank());
+                If(!IsBlank(varEmailKey), Set(varExisting, LookUp(BusinessCards, EmailKey = varEmailKey)));
+                If(IsBlank(varExisting) && !IsBlank(varPhoneKey), Set(varExisting, LookUp(BusinessCards, PhoneKey = varPhoneKey)));
+                If(IsBlank(varExisting) && !IsBlank(Trim(vFirstName)) && !IsBlank(Trim(vLastName)) && !IsBlank(Trim(vCompany)), Set(varExisting, LookUp(BusinessCards, NameCompanyKey = varNameCompanyKey)));
+                Navigate(scrReview, ScreenTransition.Fade)
+              )
+
+      - lblScanFooter:
+          Control: Label
+          Properties:
+            Align: =Align.Center
+            Color: =gblTextSecondary
+            Font: =Font.'Segoe UI'
+            Height: =50
+            Size: =12
+            Text: ="AI can miss details. You will review everything before saving."
+            Width: =Parent.Width - 64
+            X: =32
+            Y: =960
