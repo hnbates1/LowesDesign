@@ -1,0 +1,68 @@
+/**
+ * Fellix — primary typeface (brand guide, p.14–20)
+ * 7 weights loaded as variable-free static instances. woff2 primary,
+ * ttf fallback for older browsers/tools that need it.
+ */
+
+@font-face {
+  font-family: "Fellix";
+  src: url("../fonts/Fellix-Light.woff2") format("woff2"),
+       url("../fonts/Fellix-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fellix";
+  src: url("../fonts/Fellix-Regular.woff2") format("woff2"),
+       url("../fonts/Fellix-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fellix";
+  src: url("../fonts/Fellix-Medium.woff2") format("woff2"),
+       url("../fonts/Fellix-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fellix";
+  src: url("../fonts/Fellix-SemiBold.woff2") format("woff2"),
+       url("../fonts/Fellix-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fellix";
+  src: url("../fonts/Fellix-Bold.woff2") format("woff2"),
+       url("../fonts/Fellix-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fellix";
+  src: url("../fonts/Fellix-ExtraBold.woff2") format("woff2"),
+       url("../fonts/Fellix-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fellix";
+  src: url("../fonts/Fellix-Black.woff2") format("woff2"),
+       url("../fonts/Fellix-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

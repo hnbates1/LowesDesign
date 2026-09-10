@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "title": "Lowe's Employer Brand Guidelines",
+    "edition": "September 2025",
+    "classification": "Proprietary & Confidential",
+    "sourcePages": 75,
+    "sourceSha256": "2f274bf2914d7ae81d8ea8c74a2b10dc97e27a260e385ed442107db33c9323fe"
+  },
+  "mission": "Solving Problems and Fulfilling Dreams for the Home",
+  "avpPillars": [
+    {
+      "name": "I have a good job",
+      "topics": ["Pay", "Benefits", "Work", "Flexibility", "Safety"],
+      "talkAbout": ["Base pay, bonuses, stock/equity", "Retirement plan, ESPP, Discount, Health insurance", "Training, tools, role clarity", "Schedule, time on/off, location, work/life balance", "Job security, physical safety"]
+    },
+    {
+      "name": "I belong here",
+      "topics": ["Meaningful Work", "Leadership", "Sense of Community"],
+      "talkAbout": ["Serving customers, impact on communities", "Coaching, being heard, recognition, trust, inspiration", "Authenticity, care and compassion, teamwork"]
+    },
+    {
+      "name": "I have a future here",
+      "topics": ["Company Direction", "Career Opportunity", "Personal Development"],
+      "talkAbout": ["History of success, innovation, executive communication", "Career paths, opportunity, internal mobility, promotions", "Mentorship, internal skills development programs"]
+    }
+  ],
+  "coreBehaviors": ["Continue Learning", "Deliver Results", "Focus on Customers", "Show Courage", "Take Action"],
+  "values": ["Service-Minded", "Collaborative", "Inclusive", "Respectful", "Driven to Win"],
+  "voice": [
+    {"tone": "Conversational", "application": "Keep it real and relatable; avoid corporate distance."},
+    {"tone": "Inspirational", "application": "Spark ambition through real stories and encouragement."},
+    {"tone": "Confident", "application": "Use a century of experience without arrogance."},
+    {"tone": "Passionate", "application": "Show genuine belief in the rewards of working here."},
+    {"tone": "Engaging", "application": "Hold attention with positive, tasteful creative devices."}
+  ],
+  "typography": {
+    "family": "Fellix",
+    "recommendedWeights": ["Regular", "SemiBold", "Bold", "ExtraBold"],
+    "pairFormulas": {"A": "Regular + Bold", "B": "Regular only", "C": "Regular + SemiBold", "D": "SemiBold + ExtraBold"},
+    "rules": ["Do not pair Bold and ExtraBold as the two contrasting weights", "Sentence case for longer headlines, subheads and body", "Title Case for product names and taglines", "All caps only for short callouts", "At least 35% size difference between headline and body", "Minimum margin equals lowercase t width at headline size", "Text remains horizontal and left-aligned"]
+  },
+  "color": {
+    "primary": [
+      {"pantone":"2768 C","rgbPrinted":[2,29,73],"hexPrinted":"#071D49","cmyk":[100,90,13,71],"note":"Printed RGB conflicts with printed HEX; #071D49 equals RGB 7,29,73."},
+      {"pantone":"280 C","rgb":[1,33,105],"hex":"#012169","cmyk":[100,94,28,23]},
+      {"pantone":"286 C","rgb":[0,51,161],"hex":"#0033A1","cmyk":[100,90,2,1]},
+      {"pantone":"285 C","rgb":[0,113,206],"hex":"#0071CE","cmyk":[91,52,0,0]},
+      {"pantone":"299 C","rgb":[0,163,224],"hex":"#00A3E0","cmyk":[86,8,0,0]},
+      {"pantone":"291 C","rgb":[155,203,235],"hex":"#9BCBEB","cmyk":[38,4,0,0]},
+      {"pantone":"White","rgb":[255,255,255],"hex":"#FFFFFF","cmyk":[0,0,0,0]}
+    ],
+    "expressive": [
+      {"pantone":"356 C","rgb":[0,121,53],"hex":"#007935","cmyk":[89,29,100,19]},
+      {"pantone":"362 C","rgb":[80,158,47],"hex":"#509E2F","cmyk":[78,0,100,2]},
+      {"pantone":"2300 C","rgb":[169,194,63],"hex":"#A9C23F","cmyk":[40,0,89,0]},
+      {"pantone":"7409 C","rgb":[240,179,35],"hex":"#F0B323","cmyk":[0,31,100,0]},
+      {"pantone":"129 C","rgb":[243,208,62],"hex":"#F3D03E","cmyk":[4,16,87,0]},
+      {"pantone":"7427 C","rgb":[151,27,47],"hex":"#971B2F","cmyk":[8,100,70,33]},
+      {"pantone":"485 C","rgb":[218,41,28],"hex":"#DA291C","cmyk":[0,95,100,0]}
+    ],
+    "pro": ["#012169", "#F3D03E", "#00A3E0", "#FFFFFF"],
+    "skinPrimary": [
+      {"rgb":[236,185,151],"hex":"#ECB997","cmyk":[2,33,42,0]},
+      {"rgb":[225,163,132],"hex":"#E1A384","cmyk":[5,43,50,0]},
+      {"rgb":[175,114,78],"hex":"#AF724E","cmyk":[22,62,79,7]},
+      {"rgb":[156,103,76],"hex":"#9C674C","cmyk":[28,64,76,14]},
+      {"rgb":[106,58,36],"hex":"#6A3A24","cmyk":[35,78,92,42]},
+      {"rgb":[85,52,25],"hex":"#553419","cmyk":[42,72,94,53]}
+    ],
+    "skinSecondary": [
+      {"rgb":[255,194,188],"hex":"#FFC2BC","cmyk":[0,32,16,0]},
+      {"rgb":[255,200,175],"hex":"#FFC8AF","cmyk":[0,28,28,0]},
+      {"rgb":[232,170,154],"hex":"#E8AA9A","cmyk":[2,41,35,0]},
+      {"rgb":[194,133,119],"hex":"#C28577","cmyk":[18,56,51,1]},
+      {"rgb":[196,129,106],"hex":"#C4816A","cmyk":[16,59,61,1]},
+      {"rgb":[154,103,103],"hex":"#9A6767","cmyk":[32,66,51,10]}
+    ],
+    "hair": [
+      {"rgb":[45,44,42],"hex":"#2D2C2A","cmyk":[69,64,65,65]},
+      {"rgb":[236,193,128],"hex":"#ECC180","cmyk":[3,27,62,0]},
+      {"rgb":[174,121,84],"hex":"#AE7954","cmyk":[24,57,76,7]},
+      {"rgb":[97,73,43],"hex":"#61492B","cmyk":[44,62,89,42]},
+      {"rgb":[176,107,44],"hex":"#B06B2C","cmyk":[21,66,100,8]},
+      {"rgb":[220,207,179],"hex":"#DCCFB3","cmyk":[12,16,32,0]},
+      {"rgb":[182,99,0],"hex":"#B66300","cmyk":[18,72,100,7]},
+      {"rgb":[237,230,197],"hex":"#EDE6C5","cmyk":[7,6,25,0]},
+      {"rgb":[27,44,86],"hex":"#1B2C56","cmyk":[100,89,36,30]},
+      {"rgb":[125,95,68],"hex":"#7D5F44","cmyk":[39,58,77,26]},
+      {"rgb":[148,132,98],"hex":"#948462","cmyk":[39,42,69,10]},
+      {"rgb":[68,65,59],"hex":"#44413B","cmyk":[63,59,66,49]},
+      {"rgb":[108,83,77],"hex":"#6C534D","cmyk":[47,63,61,31]},
+      {"rgb":[157,24,23],"hex":"#9D1817","cmyk":[21,100,100,17]},
+      {"rgb":[233,223,215],"hex":"#E9DFD7","cmyk":[7,11,13,0]},
+      {"rgb":[203,159,118],"hex":"#CB9F76","cmyk":[16,40,61,0]}
+    ]
+  },
+  "visualHierarchy": [
+    {"frequency":"Mostly","element":"Gable","role":"Main framing element"},
+    {"frequency":"Often","element":"Photography","role":"Realistic imagery"},
+    {"frequency":"Sometimes","element":"Vest + Badge","role":"Brand messaging"},
+    {"frequency":"Occasionally","element":"Characters","role":"Internal/non-customer facing"},
+    {"frequency":"Rarely","element":"Icons","role":"Ornamental design elements"}
+  ],
+  "assetNaming": {
+    "example":"Store_PR_Hiring-Event-Flyer_CMYK.pdf",
+    "languages":{"EN":"English","ES":"Spanish","PL":"Polish"},
+    "verticals":["Store","MST","Pro","Supply Chain","Corporate","Tech","Military","Campus","CDI","Executive"],
+    "channels":{"SOC":"Social","PR":"Print","DIG":"Digital","WEB":"Website","VID":"Video","AN":"Animation"},
+    "assetTypes":["Flyer","Banner","Bag Stuffer","A-Frame","Poster","Card","E-mail"],
+    "assetNames":["Logo","Photo","Illustration","Box","Sticker","Badge"],
+    "colorModes":["CMYK","RGB","PMS"],
+    "extensions":[".pdf",".psd",".indd",".ai",".fig",".aep",".prproj",".mp4",".mp3"]
+  }
+}
